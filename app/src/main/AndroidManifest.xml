@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.suxianpeng.blog_nfc">
+
+    <!--允许开发nfc的权限-->
+    <uses-permission android:name="android.permission.NFC"/>
+    <!--声明只有带有nfc功能的手机才能下载你在google市场发布的具有NFC功能的app-->
+    <uses-feature android:name="android.hardware.nfc" android:required="true" />
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--launchMode设置为singleTop或singelTask，保证Activity的重用唯一-->
+        <activity android:name=".NFC_AutoSearch_url"
+            android:launchMode="singleTop"
+            android:label="自动打开百度页面">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
